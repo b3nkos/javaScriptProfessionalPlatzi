@@ -1,0 +1,19 @@
+{
+  "name": "platzi-media-player",
+  "version": "1.0.0",
+  "description": "project of platzi's professional javascript course",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "keywords": [
+    "platzi",
+    "player",
+    "javascript"
+  ],
+  "author": "Cristian Andres Martinez <cristianandres92@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
