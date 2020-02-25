@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototypal Inheritance</title>
+</head>
+
+<body>
+  <script>
+
+    function Hero(name) {
+      this.name = name;
+    }
+
+    Hero.prototype.sayHello = function() {
+      console.log(`Hello, my name is:  ${this.name}`);
+    }
+
+    const zelda = new Hero("zelda");
+
+    //instance's properties
+    console.log(`Name: ${zelda.name}`);
+
+    //"class" properties
+    console.log(`Say hello: ${zelda.sayHello}`);
+
+    //Inheritance properties ej: toString
+    console.log(`toString: ${zelda.toString}`);
+
+    //hasOwnProperty (where does this out?)
+    console.log(`zelda.hasOwnProperty('name'): ${zelda.hasOwnProperty('name')}`);
+    console.log(`zelda.hasOwnProperty('sayHello'): ${zelda.hasOwnProperty('sayHello')}`);
+
+    //Let's inspect the zelda prototype
+
+    //Let's inspect the Hero prototype
+
+    //Let's inspect the Object prototype
+  </script>
+</body>
+
+</html>
