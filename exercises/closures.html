@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closures</title>
+</head>
+
+<body>
+  <script>
+    //Closures
+    //printColor
+
+    (function () {
+      let color = 'green';
+
+      function printColor() {
+        console.log(color);
+      }
+
+      // printColor();
+    })();
+
+    //Functions returns functions
+    function makeColorPrinter(color) {
+      let colorMessage = `The color is ${color}`;
+
+      return function() {
+        console.log(colorMessage);
+      }
+    }
+
+    let greenColorPrinter = makeColorPrinter("green");
+    // console.log(greenColorPrinter());
+
+    const counter = {
+      count: 3
+    };
+
+    function makeCounter(n) {
+      let count = n;
+      return {
+        increase: function() {
+          count++;
+        },
+        decrease: function() {
+          count--;
+        },
+        getCount: function() {
+          return count;
+        }
+      };
+    }
+
+    const counterHidden = makeCounter(7);
+    console.log(`The count is: ${counterHidden.getCount()}`);
+    counterHidden.increase();
+    console.log(`The count is: ${counterHidden.getCount()}`);
+    counterHidden.decrease();
+    counterHidden.decrease();
+    counterHidden.decrease();
+    counterHidden.decrease();
+    console.log(`The count is: ${counterHidden.getCount()}`);
+  </script>
+</body>
+
+</html>
