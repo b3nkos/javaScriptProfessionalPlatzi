@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scope</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+  <script>
+    //Global scope
+    var message = "Hello Platzi";
+    var $ = function (message) {
+      console.log("Say: " + message);
+    }
+
+    //Function scope
+    function printNumbers() {
+      for (var i = 0; i < 10; i++) {
+        function eventuallyPrintNumbers(n) {
+          setTimeout(function () {
+            console.log(n);
+          }, 100);
+        }
+        eventuallyPrintNumbers(i);
+      }
+    }
+
+    //Block scope
+    function printNumbers2() {
+      for (let i = 0; i < 10; i++) {
+        setTimeout(function () {
+          console.log(i);
+        }, 100);
+      }
+    }
+
+    //Module scope
+  </script>
+</body>
+
+</html>
