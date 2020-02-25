@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype</title>
+</head>
+
+<body>
+  <script>
+    //A normal object
+    const zelda = {
+      name: "Zelda"
+    };
+
+    zelda.sayHello = function () {
+      console.log(`Hello my name is ${this.name}`);
+    }
+
+    zelda.sayHello();
+
+    //Another object
+    const link = {
+      name: "Link"
+    };
+
+    link.sayHello = function () {
+      console.log(`Hello my name is ${this.name}`);
+    }
+
+    link.sayHello();
+
+    //Let's be efficient a little
+    function Hero(name) {
+      const hero = {
+        name: name
+      }
+
+      hero.sayHello = function () {
+        console.log(`Hello my name is ${this.name}`);
+      }
+
+      return hero;
+    }
+
+    const deadPull = Hero("Wade Wilson");
+    deadPull.sayHello();
+
+    //Avoiding to create the same function one more time
+    const heroMethods = {
+      sayHello: function () {
+        console.log(`Hello my name is ${this.name}`);
+      }
+    };
+
+    function Hero2(name) {
+      const hero = {
+        name: name
+      }
+
+      hero.sayHello = heroMethods.sayHello;
+
+      return hero;
+    }
+
+    const superMan = Hero2("Clark Kent");
+    superMan.sayHello();
+
+    //Object.create
+    const newHeroMethods = {
+      sayHello: function () {
+        console.log(`Hello, I am super hero ${this.name}`);
+      }
+    };
+
+    function AnotherHero(name) {
+      const hero = Object.create(newHeroMethods);
+      hero.name = name;
+      return hero;
+    }
+
+    const batMan = AnotherHero("Bruno Dias");
+    batMan.sayHello();
+
+    //The hero's methods inside of Hero
+    function HeroPrototype(name) {
+      const hero = Object.create(HeroPrototype.prototype);
+      hero.name = name;
+      return hero;
+    }
+
+    HeroPrototype.prototype.sayHello = function () {
+      console.log(`Hello, I am super hero ${this.name}`);
+    };
+
+    const spiderMan = HeroPrototype("Peter Parker");
+    spiderMan.sayHello();
+
+    //new is a syntax sugar to allow make Hero.prototype to object
+    function HeroNew(name) {
+      this.name = name;
+    }
+
+    HeroNew.prototype.sayHello = function () {
+      console.log(`Hello, I am super New hero ${this.name}`);
+    };
+
+    const spiderManNew = new HeroNew("Peter Parker");
+    spiderManNew.sayHello();
+  </script>
+</body>
+
+</html>
