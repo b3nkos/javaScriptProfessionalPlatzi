@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call, Apply, Bind</title>
+</head>
+
+<body>
+
+  <ul>
+    <li><button class="call-to-action">Learn</button></li>
+    <li><button class="call-to-action">Learn more</button></li>
+    <li><button class="call-to-action">Never stop learning</button></li>
+  </ul>
+
+  <script>
+    //Set this `this` using `call`
+    function sayHello() {
+      console.log(`Hello, I am ${this.name} ${this.lastName}`);
+    }
+
+    const richard = {
+      name: "Richard",
+      lastName: "Kaufman Lopez"
+    };
+
+    sayHello.call(richard);
+
+    function walk(meters, direction) {
+      console.log(`${this.name} walks ${meters}Mts to ${direction}`);
+    }
+
+    //Set this `this` using `call` and passing arguments into function
+    walk.call(richard, 400, "North");
+    
+    //Set this `this` using `apply` and passing arguments into function
+    const values = [780, "West"];
+    walk.apply(richard, values);
+
+    //Set this `this` using `bind`
+    const daniel = {name: "Daniel", lastName: "Soft"};
+    const danielSayHello = sayHello.bind(daniel);
+    danielSayHello();
+
+    const danielWalks = walk.bind(daniel, 100, "East");
+    danielWalks();
+
+    const sara = {name: "Sara", lastName: "Sir"};
+    const SaraWalks = walk.bind(sara, 1200);
+    SaraWalks("Sur");
+
+    //When is useful to use those methods
+    const buttons = document.getElementsByClassName("call-to-action");
+    // buttons.forEach(button => {
+    //   button.onclick = () => alert("Never stop learning");
+    // });
+
+    //NodeList
+    Array.prototype.forEach.call(buttons, button => {
+      button.onclick = () => alert("Never stop learning");
+    });
+  </script>
+</body>
+
+</html>
