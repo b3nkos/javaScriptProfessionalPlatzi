@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>This</title>
+</head>
+<body>
+  <script>
+    //this in global scope
+    console.log(`this: ${this}`);
+
+    //this in scope function
+    function whoIsThis() {
+      return this;
+    }
+
+    console.log(`whoIsThis(): ${whoIsThis()}`);
+
+    //this in scope function with strict mode
+    function whoIsThisStrictMode() {
+      "use strict";
+      return this;
+    }
+
+    console.log(`whoIsThisStrictMode(): ${whoIsThisStrictMode()}`);
+
+    //this in object context
+    const person = {
+      name: "Gabriel",
+      sayHello: function() {
+        console.log(`Hello my name is ${this.name}`);
+      }
+    }
+
+    person.sayHello();
+
+    //this when we get out a function from an object
+    const action = person.sayHello;
+    action();
+
+    //this in context class
+    function Person(name) {
+      this.name = name;
+    }
+
+    Person.prototype.sayHello = function() {
+      console.log(`Hello fellow, my name is ${this.name}`);
+    }
+
+    const angela = new Person("angela");
+    angela.sayHello();
+  </script>
+</body>
+</html>
