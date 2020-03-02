@@ -1,10 +1,13 @@
 {
   "name": "platzi-media-player",
+  "browserslist": [
+    "last 1 Chrome versions"
+  ],
   "version": "1.0.0",
   "description": "project of platzi's professional javascript course",
   "main": "index.js",
   "scripts": {
-    "start": "live-server"
+    "start": "parcel index.html exercises/**/*.html"
   },
   "keywords": [
     "platzi",
@@ -14,6 +17,10 @@
   "author": "Cristian Andres Martinez <cristianandres92@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "live-server": "^1.2.1"
-  }
+    "@babel/core": "^7.8.6",
+    "babel-preset-env": "^1.7.0",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {}
 }
