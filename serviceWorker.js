@@ -18,16 +18,6 @@ self.addEventListener('fetch', event => {
 
 async function precache() {
   const cache = await caches.open(VERSION);
-  return cache.addAll([
-    '/',
-    './index.html',
-    './assets/index.js',
-    './assets/MediaPlayer.js',
-    './assets/plugins/AutoPause.js',
-    './assets/plugins/AutoPlay.js',
-    './assets/index.css',
-    './assets/BigBunny.mp4'
-  ]);
 }
 
 async function cachedResponse(request) {
@@ -36,7 +26,7 @@ async function cachedResponse(request) {
   return response || fetch(request);
 }
 
-async function updateCache() {
+async function updateCache(request) {
   const cache = await caches.open(VERSION);
   const response = await fetch(request);
   return cache.put(request, response);
