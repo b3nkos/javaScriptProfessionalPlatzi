@@ -1,7 +1,7 @@
 const VERSION = "v1";
 
 self.addEventListener('install', event => {
-  event.waitUntil(precache());
+  event.waitUntil(preCache());
 });
 
 self.addEventListener('fetch', event => {
@@ -16,7 +16,7 @@ self.addEventListener('fetch', event => {
   event.waitUntil(updateCache(request));
 });
 
-async function precache() {
+async function preCache() {
   const cache = await caches.open(VERSION);
 }
 
