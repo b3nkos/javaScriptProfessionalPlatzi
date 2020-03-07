@@ -41,10 +41,10 @@ main {
   padding: 4px;
   padding-right: 8px;
   background: white;
-  width: 80%;
-
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  bottom: 20px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -63,6 +63,7 @@ main {
 }
 
 .ads__info {
+  color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
